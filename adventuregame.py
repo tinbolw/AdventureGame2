@@ -14,11 +14,18 @@ else:
     print("Invalid selection")
     quit()
 
-print(world_selection + " loaded")
-
-
-hw.launch()
 
 
 
-hellworld.launch()
+
+end_game_screen = input("Type Quit to quit, type Stats to see your stats")
+if end_game_screen == str("Quit"):
+    quit()
+elif end_game_screen == str("Stats"):
+    print("Wip")
+else:
+    print("Invalid option")
+    quit()
+
+
+
