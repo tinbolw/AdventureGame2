@@ -88,6 +88,7 @@ def run_option3():
         print("You run up to the nearest pigman and punch him!\nHe oinks and stabs you with his sword.\nYou punch him "
               "another 19 times in quick sucession somehow and he dies.\n Luckily there are no other pigmen nearby to "
               "witness this event.")
+        health = 10
         health -= 2
         print("You got a gold sword!")
         inventory.append("Gold Sword")
