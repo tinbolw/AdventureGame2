@@ -1,5 +1,6 @@
 user_name = input("What is your characters name? ")
 import random
+
 import time
 
 mob_killed = 0
@@ -24,20 +25,21 @@ health = 10
 money = 0
 inventory = [""]
 
-if health <= 0:
-    end_option = input("You died!\nType Stats to see your stats and Quit to quit")
 
 
-    def last_option():
-        if end_option == str("Stats"):
-            view_stats()
-        elif end_option == str("Quit"):
-            print("Goodbye.")
-            time.sleep(2)
-            quit()
-        else:
-            print("Invalid option")
-            last_option()
+
+
+def last_option():
+    end_option = input("You died!\nType Stats to see your stats and Quit to quit\n")
+    if end_option == str("Stats"):
+        view_stats()
+    elif end_option == str("Quit"):
+        print("Goodbye.")
+        time.sleep(2)
+        quit()
+    else:
+        print("Invalid option")
+        last_option()
 
 
 def run_option_fort_attack():
@@ -49,7 +51,7 @@ def run_option_fort_attack():
     elif option_fort2 == str(2):
         print("You open the chest and find a black bone and some dust inside.")
         time.sleep(3)
-        print("The ground starts rumbling and the ground beneath you gives way. You fall into the lava and die.")
+        print("The ground starts rumbling and the ground beneath you gives way. You fall into the lava.")
         last_option()
     else:
         print("Invalid option")
@@ -66,7 +68,7 @@ def run_option_fort():
     elif option_fort == str(2):
         print("You open the chest and find a black bone and some dust inside.")
         time.sleep(3)
-        print("The ground starts rumbling and the ground beneath you gives way. You fall into the lava and die.")
+        print("The ground starts rumbling and the ground beneath you gives way. You fall into the lava.")
         last_option()
     elif option_fort == str(3):
         if inventory.index("Gold Sword"):
@@ -78,9 +80,23 @@ def run_option_fort():
 
 
 def run_option4():
-    print("you have reached the end of the game! (for now")
-    time.sleep(10)
-    quit()
+    option4 = input(
+        "Choose an option:\n1. Dig up the nearest plant\n2. Scout around "
+        "this area\n")
+    if option4 == str(1):
+        print("You walk over to the nearest plant, a strange tree, and punch it multiple times until it breaks.")
+        print("You got Strange Wood!")
+        inventory.append("Strange Wood")
+        run_option4w()
+    elif option4 == str(2):
+        print(
+            "You scout around the area and find that there is a fortress a hundred blocks away from you.\n It is "
+            "across the lava though...")
+        run_option4a()
+    else:
+        print("Invalid option")
+        run_option4()
+
 
 
 def run_option4w():
@@ -129,9 +145,7 @@ def run_option4a():
                     run_option4a()
                 elif option4a == str(3):
                     print("You leap into the lava and immediately start burning.")
-                    print("You died! Relaunch the game to play again")
-                    time.sleep(10)
-                    quit()
+                    last_option()
 
 
 def run_option3():
@@ -172,10 +186,8 @@ def run_option2():
         print("You have " + str(money) + " gold coins.")
         run_option3()
     elif option2 == str(2):
-        print("You jump into the lava, and within seconds, you get burnt to a crisp.\nYou died! Relaunch the game to "
-              "play again")
-        time.sleep(10)
-        quit()
+        print("You jump into the lava, and within seconds, you get burnt to a crisp.")
+        last_option()
     elif option2 == str(3):
         print("You do nothing.")
         run_option2()
@@ -197,11 +209,10 @@ def run_option1():
         run_option2()
     elif option1 == str(2):
         print("You slam your fist into the ground and the ground shakes! The ground splits where you punched it and "
-              "crumbles into the lava under it. You died! Relaunch the game to play again")
-        time.sleep(10)
-        quit()
+              "crumbles into the lava under it.")
+        last_option()
     elif option1 == str(3):
-        print("You died! Relaunch the game to try again")
+        last_option()
     else:
         print("Invalid option")
         run_option1()
