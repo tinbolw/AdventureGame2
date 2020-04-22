@@ -10,6 +10,14 @@ total_gold = 0
 def view_stats():
     print("You killed " + str(mob_killed) + " mobs!")
     print("You earned " + str(total_gold) + " gold!")
+    view_continue = input("type quit to quit.")
+    if view_continue == str("quit"):
+        time.sleep(2)
+        quit()
+    else:
+        print("invalid option, quitting anyways");
+        time.sleep(2)
+        quit()
 
 
 health = 10
@@ -25,10 +33,48 @@ if health <= 0:
             view_stats()
         elif end_option == str("Quit"):
             print("Goodbye.")
+            time.sleep(2)
             quit()
         else:
             print("Invalid option")
             last_option()
+
+
+def run_option_fort_attack():
+    option_fort2 = input("Choose an option:\n1. Scout around the area\n2. Open the nearest chest\n3. Attack the "
+                         "nearest mob\n")
+    if option_fort2 == str(1):
+        print("You arrived at a fortress, with multiple paths in different directions, and a chest in front of you. "
+              "On closer inspection, you realize the chest is trapped.")
+    elif option_fort2 == str(2):
+        print("You open the chest and find a black bone and some dust inside.")
+        time.sleep(3)
+        print("The ground starts rumbling and the ground beneath you gives way. You fall into the lava and die.")
+        last_option()
+    else:
+        print("Invalid option")
+        run_option_fort_attack()
+
+
+def run_option_fort():
+    option_fort = input("Choose an option:\n1. Scout around the area\n2. Open the nearest chest\n3. Attack the "
+                        "nearest mob\n")
+    if option_fort == str(1):
+        print("You arrived at a fortress, with multiple paths in different directions, and a chest in front of you. "
+              "On closer inspection, you realize the chest is trapped.")
+        run_option_fort()
+    elif option_fort == str(2):
+        print("You open the chest and find a black bone and some dust inside.")
+        time.sleep(3)
+        print("The ground starts rumbling and the ground beneath you gives way. You fall into the lava and die.")
+        last_option()
+    elif option_fort == str(3):
+        if inventory.index("Gold Sword"):
+            print("You walk up to the nearest mob and slash with your sword.\nThe mob runs away.")
+            run_option_fort()
+    else:
+        print("Invalid option")
+        run_option_fort()
 
 
 def run_option4():
@@ -38,9 +84,16 @@ def run_option4():
 
 
 def run_option4w():
-    print("you have reached the end of the game! (for now")
-    time.sleep(10)
-    quit()
+    option4w = input("Choose an option:\n1. Build a boat and sail to the fortress\n2. Do nothing\n")
+    if option4w == str(1):
+        print("You craft a boat and sail to the fortress. Luckily, the wood can withstand the heat of the lava.")
+        run_option_fort()
+    elif option4w == str(2):
+        print("You do nothing.")
+        run_option4w()
+    else:
+        print("Invalid option")
+        run_option4w()
 
 
 def run_option4a():
